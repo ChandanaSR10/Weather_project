@@ -1,4 +1,5 @@
 import requests
+import json
 
 url = "https://api.open-meteo.com/v1/forecast"
 params = {
@@ -12,5 +13,14 @@ params = {
 
 response = requests.get(url, params=params, verify=False)
 
-# Print raw JSON
-print(response.json())
+# Get the raw JSON data
+data = response.json()
+
+# Print it (just like before)
+print(data)
+
+# Save the raw JSON data to a file
+with open("weather_full.json", "w") as f:
+    json.dump(data, f, indent=2)
+
+print(" JSON saved to weather_full.json")
