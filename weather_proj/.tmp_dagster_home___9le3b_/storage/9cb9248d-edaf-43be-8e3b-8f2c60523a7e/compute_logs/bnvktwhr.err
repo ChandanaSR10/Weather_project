@@ -1,0 +1,23 @@
+[32m2025-07-03 10:42:30 +0000[0m - dagster - [34mDEBUG[0m - load_weather_to_snowflake_job - 9cb9248d-edaf-43be-8e3b-8f2c60523a7e - 67523 - LOGS_CAPTURED - Started capturing logs in process (pid: 67523).
+[32m2025-07-03 10:42:30 +0000[0m - dagster - [34mDEBUG[0m - load_weather_to_snowflake_job - 9cb9248d-edaf-43be-8e3b-8f2c60523a7e - 67523 - load_blob_to_snowflake - STEP_START - Started execution of step "load_blob_to_snowflake".
+[32m2025-07-03 10:42:30 +0000[0m - dagster - [34mERROR[0m - [31mload_weather_to_snowflake_job - 9cb9248d-edaf-43be-8e3b-8f2c60523a7e - 67523 - load_blob_to_snowflake - STEP_FAILURE - Execution of step "load_blob_to_snowflake" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "load_blob_to_snowflake"::
+
+ValueError: No blob_name provided in config
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 57, in op_execution_error_boundary
+    yield
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 392, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 137, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 117, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Wheather_project/weather_proj/weather_proj/ops.py", line 12, in load_blob_to_snowflake
+    raise ValueError("No blob_name provided in config")
+[0m

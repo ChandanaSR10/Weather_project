@@ -1,9 +1,14 @@
+# definitions.py
 from dagster import Definitions, load_assets_from_modules
+from weather_proj import assets
+from weather_proj.jobs import hourly_weather_job_ingestion
+from weather_proj.schedules import hourly_weather_schedule
 
-from weather_proj import assets  # noqa: TID252
-
-all_assets = load_assets_from_modules([assets])
 
 defs = Definitions(
-    assets=all_assets,
+    assets=load_assets_from_modules([assets]),
+    jobs=[
+        hourly_weather_job_ingestion,
+    ],
+    schedules=[hourly_weather_schedule],
 )

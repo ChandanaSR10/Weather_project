@@ -1,0 +1,22 @@
+# Dagster core
+dagster==1.7.4
+dagster-webserver==1.7.4
+
+# Azure Blob Storage SDK
+azure-storage-blob==12.19.1
+
+# Snowflake connector for Python
+snowflake-connector-python==3.9.1
+
+# dbt core and Snowflake plugin
+dbt-core==1.7.9
+dbt-snowflake==1.7.9
+
+# Dagster dbt integration
+dagster-dbt==0.21.14
+
+# Optional: for running cron-based schedules
+croniter==1.3.15
+
+# Optional: for loading environment variables (if needed)
+python-dotenv==1.0.1

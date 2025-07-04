@@ -1,0 +1,27 @@
+[32m2025-07-03 06:40:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e1412926-a564-435d-93b0-f1dc1ff990fb - 82471 - LOGS_CAPTURED - Started capturing logs in process (pid: 82471).
+[32m2025-07-03 06:40:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e1412926-a564-435d-93b0-f1dc1ff990fb - 82471 - write_to_azure_blob - STEP_START - Started execution of step "write_to_azure_blob".
+[32m2025-07-03 06:40:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e1412926-a564-435d-93b0-f1dc1ff990fb - write_to_azure_blob - Loading file from: /workspaces/Wheather_project/weather_proj/.tmp_dagster_home_qmt2zy06/storage/fetch_weather_api_data using PickledObjectFilesystemIOManager...
+[32m2025-07-03 06:40:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e1412926-a564-435d-93b0-f1dc1ff990fb - 82471 - write_to_azure_blob - LOADED_INPUT - Loaded input "fetch_weather_api_data" using input manager "io_manager", from output "result" of step "fetch_weather_api_data"
+[32m2025-07-03 06:40:38 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - e1412926-a564-435d-93b0-f1dc1ff990fb - 82471 - write_to_azure_blob - STEP_INPUT - Got input "fetch_weather_api_data" of type "dict". (Type check passed).
+[32m2025-07-03 06:40:38 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - e1412926-a564-435d-93b0-f1dc1ff990fb - 82471 - write_to_azure_blob - STEP_FAILURE - Execution of step "write_to_azure_blob" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "write_to_azure_blob"::
+
+NameError: name 'os' is not defined. Did you forget to import 'os'
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 57, in op_execution_error_boundary
+    yield
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 392, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 137, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 117, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Wheather_project/weather_proj/weather_proj/assets.py", line 29, in write_to_azure_blob
+    blob_conn_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+                    ^^
+[0m

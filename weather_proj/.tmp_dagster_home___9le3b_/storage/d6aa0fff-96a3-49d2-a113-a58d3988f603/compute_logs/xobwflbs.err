@@ -1,0 +1,125 @@
+[32m2025-07-03 10:12:28 +0000[0m - dagster - [34mDEBUG[0m - load_weather_to_snowflake_job - d6aa0fff-96a3-49d2-a113-a58d3988f603 - 22178 - LOGS_CAPTURED - Started capturing logs in process (pid: 22178).
+[32m2025-07-03 10:12:28 +0000[0m - dagster - [34mDEBUG[0m - load_weather_to_snowflake_job - d6aa0fff-96a3-49d2-a113-a58d3988f603 - 22178 - load_blob_to_snowflake - STEP_START - Started execution of step "load_blob_to_snowflake".
+[32m2025-07-03 10:12:33 +0000[0m - dagster - [34mERROR[0m - [31mload_weather_to_snowflake_job - d6aa0fff-96a3-49d2-a113-a58d3988f603 - 22178 - load_blob_to_snowflake - STEP_FAILURE - Execution of step "load_blob_to_snowflake" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "load_blob_to_snowflake"::
+
+snowflake.connector.errors.OperationalError: 250001: Could not connect to Snowflake backend after 2 attempt(s).Aborting
+Verify that the hostnames and port numbers in SYSTEM$ALLOWLIST are added to your firewall's allowed list.
+To further troubleshoot your connection you may reference the following article: https://docs.snowflake.com/en/user-guide/client-connectivity-troubleshooting/overview.
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 57, in op_execution_error_boundary
+    yield
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 392, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 137, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 117, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Wheather_project/weather_proj/weather_proj/assets.py", line 60, in load_blob_to_snowflake
+    sf_conn = snowflake.connector.connect(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/__init__.py", line 54, in Connect
+    return SnowflakeConnection(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 554, in __init__
+    self.connect(**kwargs)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 911, in connect
+    self.__open_connection()
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1312, in __open_connection
+    self.authenticate_with_retry(self.auth_class)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1637, in authenticate_with_retry
+    self._authenticate(auth_instance)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1715, in _authenticate
+    raise auth_op from e
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1690, in _authenticate
+    auth_instance.handle_timeout(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/auth/by_plugin.py", line 212, in handle_timeout
+    raise error
+
+The above exception was caused by the following exception:
+snowflake.connector.errors.OperationalError: 250003: Hit non-retryable SSL error, HTTPSConnectionPool(host='nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com', port=443): Max retries exceeded with url: /session/v1/login-request?request_id=7325bcc1-95de-44ec-97e2-057aca8af18f&databaseName=weather_data&schemaName=raw&warehouse=COMPUTE_WH&request_guid=dc939b1a-2c28-4801-ba52-15342cbba2d9 (Caused by SSLError(CertificateError("hostname 'nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'"))).
+Verify that the hostnames and port numbers in SYSTEM$ALLOWLIST are added to your firewall's allowed list.
+To further troubleshoot your connection you may reference the following article: https://docs.snowflake.com/en/user-guide/client-connectivity-troubleshooting/overview.
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/connection.py", line 1669, in _authenticate
+    auth.authenticate(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/auth/_auth.py", line 226, in authenticate
+    ret = self._rest._post_request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/network.py", line 805, in _post_request
+    ret = self.fetch(
+          ^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/network.py", line 924, in fetch
+    ret = self._request_exec_wrapper(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/network.py", line 1054, in _request_exec_wrapper
+    raise e
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/network.py", line 975, in _request_exec_wrapper
+    return_object = self._request_exec(
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/network.py", line 1219, in _request_exec
+    Error.errorhandler_wrapper(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/errors.py", line 279, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/errors.py", line 337, in hand_to_other_handler
+    connection.errorhandler(connection, cursor, error_class, error_value)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/errors.py", line 210, in default_errorhandler
+    raise error_class(
+
+The above exception occurred during handling of the following exception:
+snowflake.connector.vendored.requests.exceptions.SSLError: HTTPSConnectionPool(host='nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com', port=443): Max retries exceeded with url: /session/v1/login-request?request_id=7325bcc1-95de-44ec-97e2-057aca8af18f&databaseName=weather_data&schemaName=raw&warehouse=COMPUTE_WH&request_guid=dc939b1a-2c28-4801-ba52-15342cbba2d9 (Caused by SSLError(CertificateError("hostname 'nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'")))
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/network.py", line 1149, in _request_exec
+    raw_ret = session.request(
+              ^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/requests/adapters.py", line 516, in send
+    raise SSLError(e, request=request)
+
+The above exception occurred during handling of the following exception:
+snowflake.connector.vendored.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com', port=443): Max retries exceeded with url: /session/v1/login-request?request_id=7325bcc1-95de-44ec-97e2-057aca8af18f&databaseName=weather_data&schemaName=raw&warehouse=COMPUTE_WH&request_guid=dc939b1a-2c28-4801-ba52-15342cbba2d9 (Caused by SSLError(CertificateError("hostname 'nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'")))
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/requests/adapters.py", line 485, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 827, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+
+The above exception occurred during handling of the following exception:
+snowflake.connector.vendored.urllib3.util.ssl_match_hostname.CertificateError: hostname 'nvxxlmt-bbb21555.snowflakecomputing.com.snowflakecomputing.com' doesn't match either of '*.prod3.us-west-2.snowflakecomputing.com', '*.us-west-2.snowflakecomputing.com', '*.global.snowflakecomputing.com', '*.snowflakecomputing.com', '*.prod3.us-west-2.aws.snowflakecomputing.com'
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connection.py", line 472, in connect
+    _match_hostname(cert, self.assert_hostname or server_hostname)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/connection.py", line 545, in _match_hostname
+    match_hostname(cert, asserted_hostname)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/snowflake/connector/vendored/urllib3/util/ssl_match_hostname.py", line 150, in match_hostname
+    raise CertificateError(
+[0m

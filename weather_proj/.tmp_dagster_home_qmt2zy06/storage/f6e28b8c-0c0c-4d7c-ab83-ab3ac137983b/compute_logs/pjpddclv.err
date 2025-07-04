@@ -1,0 +1,54 @@
+[32m2025-07-03 06:49:42 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f6e28b8c-0c0c-4d7c-ab83-ab3ac137983b - 95377 - LOGS_CAPTURED - Started capturing logs in process (pid: 95377).
+[32m2025-07-03 06:49:42 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f6e28b8c-0c0c-4d7c-ab83-ab3ac137983b - 95377 - write_to_azure_blob - STEP_START - Started execution of step "write_to_azure_blob".
+[32m2025-07-03 06:49:42 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f6e28b8c-0c0c-4d7c-ab83-ab3ac137983b - write_to_azure_blob - Loading file from: /workspaces/Wheather_project/weather_proj/.tmp_dagster_home_qmt2zy06/storage/fetch_weather_api_data using PickledObjectFilesystemIOManager...
+[32m2025-07-03 06:49:42 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f6e28b8c-0c0c-4d7c-ab83-ab3ac137983b - 95377 - write_to_azure_blob - LOADED_INPUT - Loaded input "fetch_weather_api_data" using input manager "io_manager"
+[32m2025-07-03 06:49:42 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f6e28b8c-0c0c-4d7c-ab83-ab3ac137983b - 95377 - write_to_azure_blob - STEP_INPUT - Got input "fetch_weather_api_data" of type "dict". (Type check passed).
+[32m2025-07-03 06:49:43 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - f6e28b8c-0c0c-4d7c-ab83-ab3ac137983b - 95377 - write_to_azure_blob - STEP_FAILURE - Execution of step "write_to_azure_blob" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "write_to_azure_blob"::
+
+azure.core.exceptions.ResourceNotFoundError: The specified container does not exist.
+RequestId:e34a27a5-301e-0001-55e6-ebaf5a000000
+Time:2025-07-03T06:49:43.0009426Z
+ErrorCode:ContainerNotFound
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>ContainerNotFound</Code><Message>The specified container does not exist.
+RequestId:e34a27a5-301e-0001-55e6-ebaf5a000000
+Time:2025-07-03T06:49:43.0009426Z</Message></Error>
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 57, in op_execution_error_boundary
+    yield
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 392, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 137, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 117, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Wheather_project/weather_proj/weather_proj/assets.py", line 36, in write_to_azure_blob
+    blob_client.upload_blob(json.dumps(fetch_weather_api_data), overwrite=True)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/core/tracing/decorator.py", line 119, in wrapper_use_tracer
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/storage/blob/_blob_client.py", line 605, in upload_blob
+    return upload_block_blob(**options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/storage/blob/_upload_helpers.py", line 197, in upload_block_blob
+    process_storage_error(error)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/storage/blob/_shared/response_handlers.py", line 186, in process_storage_error
+    exec("raise error from None")   # pylint: disable=exec-used # nosec
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 1, in <module>
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/storage/blob/_upload_helpers.py", line 105, in upload_block_blob
+    response = client.upload(
+               ^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/core/tracing/decorator.py", line 119, in wrapper_use_tracer
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/storage/blob/_generated/operations/_block_blob_operations.py", line 885, in upload
+    map_error(status_code=response.status_code, response=response, error_map=error_map)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/azure/core/exceptions.py", line 163, in map_error
+    raise error
+[0m

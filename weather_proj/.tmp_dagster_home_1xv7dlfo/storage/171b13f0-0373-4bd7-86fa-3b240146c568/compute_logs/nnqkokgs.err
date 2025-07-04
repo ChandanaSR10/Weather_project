@@ -1,0 +1,2 @@
+[32m2025-07-03 06:28:48 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 171b13f0-0373-4bd7-86fa-3b240146c568 - 64329 - LOGS_CAPTURED - Started capturing logs in process (pid: 64329).
+[32m2025-07-03 06:28:48 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 171b13f0-0373-4bd7-86fa-3b240146c568 - 64329 - fetch_weather_api_data - STEP_START - Started execution of step "fetch_weather_api_data".

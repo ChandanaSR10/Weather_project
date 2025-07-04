@@ -1,0 +1,10 @@
+[32m2025-07-03 11:00:07 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - 93509 - LOGS_CAPTURED - Started capturing logs in process (pid: 93509).
+[32m2025-07-03 11:00:07 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - 93509 - fetch_weather_api_data - STEP_START - Started execution of step "fetch_weather_api_data".
+/home/codespace/.local/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.open-meteo.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+[32m2025-07-03 11:00:08 +0000[0m - dagster - [34mINFO[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - fetch_weather_api_data - Fetched data from API
+[32m2025-07-03 11:00:08 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - 93509 - fetch_weather_api_data - STEP_OUTPUT - Yielded output "result" of type "dict". (Type check passed).
+[32m2025-07-03 11:00:08 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - fetch_weather_api_data - Writing file at: /workspaces/Wheather_project/weather_proj/.tmp_dagster_home___9le3b_/storage/fetch_weather_api_data using PickledObjectFilesystemIOManager...
+[32m2025-07-03 11:00:08 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - 93509 - fetch_weather_api_data - ASSET_MATERIALIZATION - Materialized value fetch_weather_api_data.
+[32m2025-07-03 11:00:08 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - 93509 - fetch_weather_api_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-07-03 11:00:08 +0000[0m - dagster - [34mDEBUG[0m - hourly_weather_job - 79a4be88-2a97-4e9a-9e0b-ba149f297cef - 93509 - fetch_weather_api_data - STEP_SUCCESS - Finished execution of step "fetch_weather_api_data" in 760ms.
