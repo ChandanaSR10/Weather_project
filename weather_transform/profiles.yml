@@ -1,0 +1,14 @@
+weather_transform:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: nvxxlmt-bbb21555
+      user: hardik123
+      password: _Snowflake@2523
+      role: sysadmin
+      database: weather_data
+      warehouse: COMPUTE_WH
+      schema: analytics
+      threads: 2
+      client_session_keep_alive: False

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    database: weather_data
+    schema: raw
+    tables:
+      - name: weather_raw
+        description: >
+          Raw JSON weather data ingested from Open-Meteo API and stored in Azure Blob Storage,
+          then loaded into Snowflake. Each row contains a single day's full JSON blob.
+        columns:
+          - name: $1
+            description: JSON payload containing daily and hourly weather metrics.

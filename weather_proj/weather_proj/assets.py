@@ -5,6 +5,7 @@ from azure.storage.blob import BlobServiceClient
 import json, datetime
 import os
 
+
 @dg.asset
 def fetch_weather_api_data(context) -> dict:
     import requests
@@ -20,11 +21,11 @@ def fetch_weather_api_data(context) -> dict:
     }
 
     response = requests.get(url, params=params, verify=False)
-    data = response.json()  # This is your raw JSON as Python dict
+    data = response.json()
     context.log.info("Fetched data from API")
-    return data  # Return raw JSON
+    return data
 
-@dg.asset(deps=[fetch_weather_api_data])
+@dg.asset  # ✅ no deps here
 def write_to_azure_blob(context, fetch_weather_api_data: dict) -> str:
     blob_conn_str = "DefaultEndpointsProtocol=https;AccountName=weatherraw25;AccountKey=k9dFJHtS3ZKrOwdY91ETEmNnUfLZotS25781iumemfDGfsxv5olQA8KyTpTdNDOdj3Iq8s7Trqpp+ASteaFlAQ==;EndpointSuffix=core.windows.net"
     container = "rawweatherdata"
@@ -37,15 +38,3 @@ def write_to_azure_blob(context, fetch_weather_api_data: dict) -> str:
     blob_client.upload_blob(json.dumps(fetch_weather_api_data), overwrite=True)
     context.log.info(f"Wrote to blob: {file_name}")
     return file_name
-
-import dagster as dg
-from azure.storage.blob import BlobServiceClient
-import json
-import datetime
-import snowflake.connector
-
-
-
-
-
-

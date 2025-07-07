@@ -1,0 +1,57 @@
+[32m2025-07-04 07:09:15 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140859 - LOGS_CAPTURED - Started capturing logs in process (pid: 140859).
+[32m2025-07-04 07:09:15 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140859 - run_dbt_333e7 - STEP_START - Started execution of step "run_dbt_333e7".
+[32m2025-07-04 07:09:15 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Executing command: dbt --no-use-colors --log-format json build --project-dir ../weather_transform --profiles-dir ../weather_transform --select fqn:*
+[32m2025-07-04 07:09:18 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Running with dbt=1.6.6
+[32m2025-07-04 07:09:19 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Registered adapter: snowflake=1.6.6
+[32m2025-07-04 07:09:19 +0000[0m - dagster - [34mWARNING[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - [WARNING]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.weather_transform.example
+[32m2025-07-04 07:09:19 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Found 2 models, 1 source, 0 exposures, 0 metrics, 389 macros, 0 groups, 0 semantic models
+[32m2025-07-04 07:09:19 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7
+[32m2025-07-04 07:09:26 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Concurrency: 2 threads (target='dev')
+[32m2025-07-04 07:09:26 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7
+[32m2025-07-04 07:09:26 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - 1 of 2 START sql table model analytics_analytics.stg_weather_data .............. [RUN]
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mERROR[0m - [31mresource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - 1 of 2 ERROR creating sql table model analytics_analytics.stg_weather_data ..... [ERROR in 2.16s][0m
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - 2 of 2 SKIP relation analytics_analytics.daily_weather_analysis ................ [SKIP]
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Finished running 2 table models in 0 hours 0 minutes and 8.98 seconds (8.98s).
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Completed with 1 error and 0 warnings:
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mERROR[0m - [31mresource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 -   Database Error in model stg_weather_data (models/staging/stg_weather_data.sql)
+  001044 (42P13): SQL compilation error: error line 0 at position -1
+  Invalid argument types for function 'GET': (VARCHAR(16777216), VARCHAR(5))
+  compiled Code at target/run/weather_transform/models/staging/stg_weather_data.sql[0m
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7
+[32m2025-07-04 07:09:28 +0000[0m - dagster - [34mINFO[0m - resource:dbt - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - run_dbt_333e7 - Done. PASS=0 WARN=0 ERROR=1 SKIP=1 TOTAL=2
+[32m2025-07-04 07:09:30 +0000[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140859 - run_dbt_333e7 - STEP_FAILURE - Execution of step "run_dbt_333e7" failed.
+
+dagster_dbt.errors.DagsterDbtCliHandledRuntimeError: Handled error in the dbt CLI (return code 1)
+
+Stack Trace:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_plan.py", line 282, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 501, in core_dagster_event_sequence_for_step
+    for user_event in _step_output_error_checked_user_event_sequence(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 186, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 91, in _process_asset_results_to_events
+    for user_event in user_event_sequence:
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute.py", line 195, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn, compute_context):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_core/execution/plan/compute.py", line 164, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 468, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster_dbt/asset_defs.py", line 344, in _dbt_op
+    yield from _stream_event_iterator(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster_dbt/asset_defs.py", line 246, in _stream_event_iterator
+    for parsed_json_line in dbt_resource.cli_stream_json(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster_dbt/core/resources.py", line 227, in cli_stream_json
+    for event in execute_cli_stream(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster_dbt/core/utils.py", line 190, in execute_cli_stream
+    for event in _core_execute_cli(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/dagster_dbt/core/utils.py", line 163, in _core_execute_cli
+    raise DagsterDbtCliHandledRuntimeError(messages=messages)
+[0m

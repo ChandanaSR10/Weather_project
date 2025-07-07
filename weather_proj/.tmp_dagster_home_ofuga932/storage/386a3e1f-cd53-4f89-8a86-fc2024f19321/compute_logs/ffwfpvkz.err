@@ -1,0 +1,8 @@
+[32m2025-07-04 07:09:15 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140851 - LOGS_CAPTURED - Started capturing logs in process (pid: 140851).
+[32m2025-07-04 07:09:15 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140851 - fetch_weather_api_data - STEP_START - Started execution of step "fetch_weather_api_data".
+[32m2025-07-04 07:09:16 +0000[0m - dagster - [34mINFO[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - fetch_weather_api_data - Fetched data from API
+[32m2025-07-04 07:09:16 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140851 - fetch_weather_api_data - STEP_OUTPUT - Yielded output "result" of type "dict". (Type check passed).
+[32m2025-07-04 07:09:16 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - fetch_weather_api_data - Writing file at: /workspaces/Wheather_project/weather_proj/.tmp_dagster_home_ofuga932/storage/fetch_weather_api_data using PickledObjectFilesystemIOManager...
+[32m2025-07-04 07:09:16 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140851 - fetch_weather_api_data - ASSET_MATERIALIZATION - Materialized value fetch_weather_api_data.
+[32m2025-07-04 07:09:16 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140851 - fetch_weather_api_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-07-04 07:09:16 +0000[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 386a3e1f-cd53-4f89-8a86-fc2024f19321 - 140851 - fetch_weather_api_data - STEP_SUCCESS - Finished execution of step "fetch_weather_api_data" in 785ms.
